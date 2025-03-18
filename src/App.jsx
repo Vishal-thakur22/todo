@@ -629,59 +629,94 @@
 // export default App;
 
 
-import { useState } from "react";
+
+
+
+
+//to do app   
+
+
+// import { useState } from "react";
+
+// const App = () => {
+
+  
+//   const [todo, setTodo] = useState([]); //in memory db
+//   const [task, setTask] = useState(""); //input field
+
+//   function handleAddTask(){
+//     if(task=="")
+//       return alert("please enter any task");
+//     setTodo([...todo,{name: task, id:(crypto.randomUUID())}]);  // use  unique id for every task . better than randon.math
+//     setTask(""); 
+//   }
+//   console.log(todo);
+// const handleDelete=(index)=>{
+//   const newTodos =todo.filter((t,idx)=> idx !==index);
+//   setTodo(newTodos);
+// }
+
+//   //in memory db
+//   return (
+//     <div className="min-h-screen flex flex-col text-center bg-gray-100 p-5">
+//       <h1 className="font-bold text-2xl mb-4">Todo List</h1>
+
+
+// <div className="flex mb-4 gap-2.5 justify-center ">
+//   <input placeholder="Enter your task" 
+//    className="border rounded-x1 p-2 w-64 text-center "
+//    onChange={(e)=>setTask(e.target.value)}
+//    value={task}
+  
+//   ></input>
+//   <button className="bg-blue-400 text-xl rounded text-center justify-center "
+//    onClick={handleAddTask} > Add Task
+//    </button>
+
+// </div>
+// <ul className="w-72 list-disc pl-5 list-inside">
+
+//   {todo.map((t,index) => (<li
+
+//   key={t.id} // don not use index as key so if we delete any item , then it will re-render the the page for every delete option. 
+
+//   className="flex justify-between items-center bg-amber-100 p-2 rounded mb-2"
+//   >
+//     {t.name}
+//     <button className="text-red-300 font-extrabold"
+//      onClick={()=> handleDelete(index)}>X</button>
+
+//   </li>))
+// }
+
+// </ul>
+
+//     </div>
+//   );
+// };
+
+// export default App;
+//
+//
+
+import React from "react";
+import { BrowserRouter, Routes ,Route} from "react-router-dom";
+import Home from "./components/Home";
+import Product from "./components/Product";
 
 const App = () => {
-  const [todo, setTodo] = useState([]); //in memory db
-  const [task, setTask] = useState(""); //input field
+  return(
+    <>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/home" element={<Home />} />
+      <Route path="/product" element={<Product />} />
+    </Routes>
+    </BrowserRouter>
+    </>
 
-  function handleAddTask(){
-    if(task=="")
-      return alert("please enter any task");
-    setTodo([...todo,task]); 
-    setTask(""); 
-  }
-  console.log(todo);
-const handleDelete=(index)=>{
-  const newTodos =todo.filter((t,idx)=> idx !==index);
-  setTodo(newTodos);
-}
-
-  //in memory db
-  return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100 p-5">
-      <h1 className="font-bold text-2xl mb-4">Todo List</h1>
-
-
-<div className="flex mb-4 gap-2.5">
-  <input placeholder="Enter your task" 
-   className="border rounded-x1 p-2 w-64 "
-   onChange={(e)=>setTask(e.target.value)}
-   value={task}
-  
-  ></input>
-  <button className="bg-blue-400 text-xl rounded  "
-   onClick={handleAddTask} > Add Task
-   </button>
-
-</div>
-<ul className="w-72">
-  {todo.map((t,index) => (<li
-  key={index}
-  className="flex justify-between items-center bg-amber-100 p-2 rounded mb-2"
-  >
-    {t}
-    <button className="text-red-300 font-extrabold"
-     onClick={()=> handleDelete(index)}>X</button>
-
-  </li>))
-}
-
-</ul>
-
-    </div>
   );
-};
+ };
 
-export default App;
+ export default App;
 
