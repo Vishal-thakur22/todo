@@ -699,20 +699,32 @@
 //
 //
 
+
+// routing//
 import React from "react";
-import { BrowserRouter, Routes ,Route} from "react-router-dom";
+import { BrowserRouter, Routes ,Route, Link} from "react-router-dom";
 import Home from "./components/Home";
 import Product from "./components/Product";
+import Login from "./components/Login";
+import Phones from "./components/Phones";
+import User from "./components/User";
+import Navbar from "./components/Navbar";
+
 
 const App = () => {
   return(
     <>
-    <BrowserRouter>
+    <Navbar/>
     <Routes>
-      <Route path="/home" element={<Home />} />
-      <Route path="/product" element={<Product />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/product" element={<Product />}>
+      <Route path="/product/user" element={<User/>} />
+      </Route>
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/phones" element={<Phones />} />
+      <Route path="*" element={<h1>Page not found</h1>} />
     </Routes>
-    </BrowserRouter>
+    
     </>
 
   );
